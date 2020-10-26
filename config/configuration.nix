@@ -10,9 +10,9 @@ in
   imports = [
     ./rpi3-hardware.nix
 
-    ./gemini.nix
+#    ./gemini.nix
     ./noip.nix
-    ./spi.nix
+    ./hyperion.nix
   ];
 
 
@@ -37,22 +37,22 @@ in
   services.openssh.authorizedKeysFiles = [ "${sshKey}" ];
   virtualisation.docker.enable = true;
 
-  services.molly-brown = {
-    enable = true;
-    docBase = "${home}/gmi";
-    hostName = "pn.hopto.org";
-    certPath = "${home}/.gmi.keys/ca-cert.pem";
-    keyPath = "${home}/.gmi.keys/ca-key.rsa";
-  };
+  #services.molly-brown = {
+    #enable = true;
+    #docBase = "${home}/gmi";
+    #hostName = "pn.hopto.org";
+    #certPath = "${home}/.gmi.keys/ca-cert.pem";
+    #keyPath = "${home}/.gmi.keys/ca-key.rsa";
+  #};
 
   environment.systemPackages = with pkgs; [
     git docker-compose
   ];
 
   environment.shellAliases = {
-    cf = "vim ${home}/nixos/configuration.nix";
-    # nixos-rebuild = "sudo nixos-rebuild -I nixos-config=${home}/nixos/configuration.nix";
-    nixos-rebuild = "sudo nixos-rebuild";
+    cf = "vim ${home}/raspberry/config/configuration.nix";
+    nixos-rebuild = "sudo nixos-rebuild -I nixos-config=${home}/raspberry/config/configuration.nix";
+    # nixos-rebuild = "sudo nixos-rebuild";
   };
 
   security.sudo.wheelNeedsPassword = false;

@@ -14,7 +14,7 @@
     enable = true;
     wantedBy = [ "network-online.target" ];
     serviceConfig = {
-      Exec = "{pkgs.nur.repos.pn.agate}/bin/agate /home/pn/gmi /home/pn/.gmi.keys/ca-cert.pem /home/pn/.gmi.keys/ce-key.rsa";
+      ExecStart = "${pkgs.nur.repos.pn.agate}/bin/agate /home/pn/gmi /home/pn/.gmi.keys/ca-cert.pem /home/pn/.gmi.keys/ce-key.rsa";
       Restart = "on-failure";
     };
   };
