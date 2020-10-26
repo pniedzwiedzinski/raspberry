@@ -8,22 +8,12 @@ let
 in
 {
   imports = [
+    ./rpi3-hardware.nix
+
+    ./gemini.nix
     ./noip.nix
     ./spi.nix
   ];
-
-  # NixOS wants to enable GRUB by default
-  boot.loader.grub.enable = false;
-  # Enables the generation of /boot/extlinux/extlinux.conf
-  boot.loader.generic-extlinux-compatible.enable = true;
-
-  # "battle-tested" version
-  boot.kernelPackages = pkgs.linuxPackages_4_19;
-
-  # !!! Needed for the virtual console to work on the RPi 3, as the default of 16M doesn't seem to be enough.
-  # If X.org behaves weirdly (I only saw the cursor) then try increasing this to 256M.
-  # On a Raspberry Pi 4 with 4 GB, you should either disable this parameter or increase to at least 64M if you want the USB ports to work.
-  boot.kernelParams = ["cma=32M"];
 
 
   networking.hostName = "rpi";
@@ -61,7 +51,8 @@ in
 
   environment.shellAliases = {
     cf = "vim ${home}/nixos/configuration.nix";
-    nixos-rebuild = "sudo nixos-rebuild -I nixos-config=${home}/nixos/configuration.nix";
+    # nixos-rebuild = "sudo nixos-rebuild -I nixos-config=${home}/nixos/configuration.nix";
+    nixos-rebuild = "sudo nixos-rebuild";
   };
 
   security.sudo.wheelNeedsPassword = false;

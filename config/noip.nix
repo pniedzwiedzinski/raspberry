@@ -5,6 +5,7 @@ in
   {
     system.activationScripts.noip = ''
       cat ${configFile} > /tmp/noip.conf
+      chmod +w /tmp/noip.conf
       ${pkgs.noip}/bin/noip2 -c /tmp/noip.conf
     '';
   }
