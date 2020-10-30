@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
+  imports = [
+    # <nixpkgs/nixos/modules/installer/cd-dvd/sd-image-armv7l-multiplatform.nix>
+  ];
+
   # NixOS wants to enable GRUB by default
   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
@@ -17,5 +21,12 @@
     device = "/dev/disk/by-label/NIXOS_SD";
     fsType = "ext4";
   };
+
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 1024;
+    }
+  ];
 
 }

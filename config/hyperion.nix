@@ -11,6 +11,10 @@ in
     ./spi.nix
   ];
 
+  environment.systemPackages = [
+    hyperion
+  ];
+
   systemd.services.hyperion = {
     enable = true;
     wantedBy = ["multi-user.target"];
