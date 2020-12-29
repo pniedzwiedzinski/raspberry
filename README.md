@@ -6,6 +6,8 @@ My rpi3B config
 
 **Requirements**:
 - NixOS or nix installed
+- aarch64 emulation enabled
+  * On nixos `boot.binfmt.emulatedSystems = [ "aarch64-linux" ]`
 
 0. change configuration in `./config`
 1. run `build.sh` - at the end it will output store path to .img

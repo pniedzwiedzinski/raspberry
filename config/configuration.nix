@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   user = "pn";
   home = "/home/${user}";
@@ -11,7 +11,7 @@ in
     ./rpi3-hardware.nix
 
 #    ./gemini.nix
-    ./noip.nix
+#    ./noip.nix
     ./hyperion.nix
   ];
 
